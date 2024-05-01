@@ -10,11 +10,39 @@
 
 # db/seeds.rb
 
-5.times do |i|
-  Restaurant.find_or_create_by!(
-    name: "Restaurant #{i + 1}",
-    address: "#{i + 1} Main St, City",
-    phone_number: '123-456-7890',
-    category: ['chinese", "italian", "japanese", "french", "belgian'].sample
-  )
-end
+puts 'Creating restaurants...'
+
+Restaurant.create!([
+  {
+    name: 'Din Tai Fung',
+    address: '5 Henrietta St, Covent Garden, London WC2E 8PT',
+    phone_number: '020 3301 2208',
+    category: 'chinese'
+  },
+  {
+    name: 'Piccolino',
+    address: '8 Clarence St, Manchester M2 4DW',
+    phone_number: '0161 834 8708',
+    category: 'italian'
+  },
+  {
+    name: 'Roka',
+    address: '37 Charlotte St, Fitzrovia, London W1T 1RR',
+    phone_number: '020 7580 6777',
+    category: 'japanese'
+  },
+  {
+    name: 'Chez Bruce',
+    address: '2 Bellevue Rd, Wandsworth, London SW17 7EG',
+    phone_number: '020 8672 0114',
+    category: 'french'
+  },
+  {
+    name: 'Chez Léon',
+    address: '192 Rue de Flandre, 1000 Bruxelles, Belgium',
+    phone_number: '+32 2 512 16 26',
+    category: 'belgian'
+  }
+])
+
+puts 'Finished!'

@@ -1,0 +1,21 @@
+<!-- app/views/restaurants/show.html.erb -->
+<h1><%= @restaurant.name %></h1>
+<p><%= @restaurant.address %></p>
+<p><%= @restaurant.phone_number %></p>
+<p><%= @restaurant.category %></p>
+
+<h2>Reviews</h2>
+<% @restaurant.reviews.each do |review| %>
+  <p><%= review.rating %>/5: <%= review.content %></p>
+<% end %>
+
+<h3>Add a Review</h3>
+<%= form_with(model: [@restaurant, @restaurant.reviews.build], local: true) do |form| %>
+  <%= form.label :rating %>
+  <%= form.number_field :rating, in: 1..5 %>
+
+  <%= form.label :content %>
+  <%= form.text_area :content %>
+
+  <%= form.submit 'Submit Review' %>
+<% end %>
